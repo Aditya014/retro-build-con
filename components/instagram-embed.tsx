@@ -9,9 +9,10 @@ interface InstagramEmbedProps {
 export function InstagramEmbed({ url }: InstagramEmbedProps) {
   useEffect(() => {
     // Process Instagram embeds when component mounts
-    if (window.instgrm) {
-      window.instgrm.Embeds.process()
-    }
+  if (typeof window !== 'undefined' && window.instgrm) {
+  window.instgrm.Embeds.process();
+}
+
   }, [])
 
   const embedHtml = `<blockquote 

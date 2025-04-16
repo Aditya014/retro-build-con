@@ -341,11 +341,8 @@ export function PricingCalculator() {
         features: features.join(', ')
       }
 
-      const [response, error] = await submitForm(submissionData)
+      await submitForm(submissionData)
 
-      if (error) {
-        throw new Error('Failed to submit form')
-      }
 
       confetti({
         particleCount: 150,

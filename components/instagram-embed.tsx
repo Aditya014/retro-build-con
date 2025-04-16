@@ -6,13 +6,22 @@ interface InstagramEmbedProps {
   url: string
 }
 
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: {
+        process(): void
+      }
+    }
+  }
+}
+
 export function InstagramEmbed({ url }: InstagramEmbedProps) {
   useEffect(() => {
     // Process Instagram embeds when component mounts
-  if (typeof window !== 'undefined' && window.instgrm) {
-  window.instgrm.Embeds.process();
-}
-
+    if (typeof window !== 'undefined' && window.instgrm) {
+      window.instgrm.Embeds.process()
+    }
   }, [])
 
   const embedHtml = `<blockquote 

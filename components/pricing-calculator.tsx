@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -339,9 +341,9 @@ export function PricingCalculator() {
         features: features.join(', ')
       }
 
-      const result = await submitForm(submissionData)
+      const [response, error] = await submitForm(submissionData)
 
-      if (result.error) {
+      if (error) {
         throw new Error('Failed to submit form')
       }
 

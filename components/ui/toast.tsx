@@ -127,5 +127,3 @@ export {
   ToastTitle,
   ToastViewport,
 }
-
-export { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport }

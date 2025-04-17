@@ -70,7 +70,7 @@ export default function ProjectsPage() {
               Featured Projects
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-             Discover our exclusive collection of masterfully crafted sanctuaries where visionary design meets flawless execution. Each space in our portfolio exemplifies our unwavering commitment to architectural excellence and refined luxury.
+             Discover our exclusive collection of masterfully crafted sanctuaries where visionary design meets flawless execution.
             </p>
           </div>
         </div>

@@ -83,7 +83,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
   {/* Add the favicon */}
-  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" />
 </head>
       <body className={`${playfair.variable} ${poppins.variable} font-poppins`}>
         <ThemeProvider

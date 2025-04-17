@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import { getAllBlogPosts } from '@/lib/markdown';
 
 const EXTERNAL_DATA_URL = 'https://retrobuildcon.com';
@@ -57,21 +58,35 @@ function generateSiteMap(posts: any[]) {
  `;
 }
 
-export async function getServerSideProps({ res }: any) {
+// Replace getServerSideProps with getStaticProps
+export const getStaticProps: GetStaticProps = async () => {
   const posts = getAllBlogPosts();
-
+  
+  // Instead of setting headers directly, we'll pass the XML as a prop
   const sitemap = generateSiteMap(posts);
-
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
-
+  
   return {
-    props: {},
+    props: {
+      sitemap,
+    },
+    // Revalidate every day (86400 seconds)
+    revalidate: 86400,
   };
-}
+};
 
-export default function SiteMap() {
-  // getServerSideProps will handle the XML generation
+export default function SiteMap({ sitemap }: { sitemap: string }) {
+  // Use a useEffect to set the XML content type
+  if (typeof window === 'undefined') {
+    return { __html: sitemap };
+  }
+  
   return null;
 }
+
+// Add this to handle the XML content type
+export const getStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
